@@ -1,0 +1,36 @@
+<h2>Investors</h2>
+
+<div *ngIf="loading" class="loading">
+  Loading...
+</div>
+
+<div *ngIf="error" class="error">
+  {{ error }}
+</div>
+
+<div *ngIf="!loading && !error">
+  <table class="investor-table">
+    <thead>
+      <tr>
+        <th><strong>ID</strong></th>
+        <th><strong>Name</strong></th>
+        <th><strong>Type</strong></th>
+        <th><strong>Date Added</strong></th>
+        <th><strong>Address</strong></th>
+        <th><strong>Total Commitments</strong></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let investor of investorList" (click)="selectInvestor(investor.investorId)" style="cursor: pointer;">
+        <td>{{ investor.investorId }}</td>
+        <td>{{ investor.investorName }}</td>
+        <td>{{ investor.investorType }}</td>
+        <td>{{ investor.investorDateAdded | date }}</td>
+        <td>{{ investor.investorCountry }}</td>
+        <td>{{ investor.totalCommitments | formatCurrency  }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <app-commitments [investorId]="selectedInvestorId" *ngIf="selectedInvestorId"></app-commitments>
+</div>

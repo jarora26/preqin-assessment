@@ -1,0 +1,44 @@
+.commitment-table {
+  width: 100%;
+  border-collapse: collapse; /* Ensures no gaps between borders (if any) */
+}
+
+.commitment-table th,
+.commitment-table td {
+  padding: 8px;
+  text-align: left;
+  border: none; /* Remove borders */
+}
+
+.commitment-table th {
+  background-color: #f2f2f2; /* Keep header background */
+}
+
+.commitment-table td {
+  background-color: #ffffff; /* Optional: Add background color to cells */
+}
+
+/* Styles for asset class boxes */
+.asset-class-boxes {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.asset-class-box {
+  padding: 10px 15px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.asset-class-box.active {
+  background-color: rgb(92, 89, 89);
+  color: white;
+}
+
+.asset-class-box:hover {
+  background-color: #e0e0e0;
+}

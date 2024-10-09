@@ -1,0 +1,45 @@
+h2 {
+  margin-bottom: 20px;
+}
+
+.loading {
+  font-size: 16px;
+  font-style: italic;
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.investor-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+    background-color: #f9f9f9;
+
+    th {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 2px solid #ccc;
+      font-weight: bold;
+    }
+  }
+
+  tbody {
+    tr {
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      td {
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+      }
+
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+  }
+}

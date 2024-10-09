@@ -1,0 +1,47 @@
+<h2>Commitments</h2>
+
+<div *ngIf="loading" class="loading">
+  Loading commitments...
+</div>
+
+<div *ngIf="error" class="error">
+  {{ error }}
+</div>
+
+<!-- Display Asset Classes as clickable boxes -->
+<div class="asset-class-boxes" *ngIf="!loading && !error">
+  <div
+    *ngFor="let class of getAssetClasses()"
+    [ngClass]="{'active': selectedAssetClass === class || (selectedAssetClass === '' && class === 'All')}"
+    class="asset-class-box"
+    (click)="onAssetClassClick(class)"
+  >
+    {{ class }}
+    <span *ngIf="class === 'All'"> ({{ totalCommitment | formatCurrency }})</span>
+    <span *ngIf="class !== 'All'"> ({{ getTotalForAssetClass(class) | formatCurrency }})</span>
+  </div>
+</div>
+
+<!-- Display Total Amount -->
+<div *ngIf="!loading && !error">
+  <h3>Total Commitment for {{ selectedAssetClass || 'All' }}: {{ totalCommitment | formatCurrency }}</h3>
+</div>
+
+<table *ngIf="!loading && !error" class="commitment-table">
+  <thead>
+    <tr>
+      <th> Id </th>
+      <th>Asset Class</th>
+      <th>Currency</th>
+      <th>Commitment Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let commitment of filteredCommitments">
+      <td> {{ commitment.commitmentId }} </td>
+      <td>{{ commitment.commitmentAssetClass }}</td>
+      <td>{{ commitment.commitmentCurrency }}</td>
+      <td>{{ commitment.commitmentAmount | formatCurrency }}</td>
+    </tr>
+  </tbody>
+</table>
